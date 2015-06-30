@@ -1,7 +1,7 @@
 (function(){
 	"use strict";
 
-	var root = this,
+	var root = (1, eval)('this'),
 		Chart = root.Chart,
 		//Cache a local reference to Chart.helpers
 		helpers = Chart.helpers;
@@ -195,7 +195,7 @@
 			helpers.each(this.segments,function(segment){
 				segment.save();
 			});
-			
+
 			this.reflow();
 			this.render();
 		},
