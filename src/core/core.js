@@ -14,7 +14,7 @@
 	"use strict";
 
 	//Declare root variable - window in the browser, global on the server
-	var root = this,
+	var root = (1, eval)('this'),
 		previous = root.Chart;
 
 	//Occupy the global variable of Chart, and create a simple base class

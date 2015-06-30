@@ -2,7 +2,7 @@
 
 	"use strict";
 
-	var root = this,
+	var root = (1, eval)('this'),
 		Chart = root.Chart,
 		helpers = Chart.helpers;
 
@@ -19,7 +19,7 @@
 		easing: "", // the easing to use for this animation
 		render: null, // render function used by the animation service
 
-		onAnimationProgress: null, // user specified callback to fire on each step of the animation 
+		onAnimationProgress: null, // user specified callback to fire on each step of the animation
 		onAnimationComplete: null, // user specified callback to fire when the animation finishes
 	});
 

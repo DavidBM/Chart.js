@@ -1,7 +1,7 @@
 (function() {
 	"use strict";
 
-	var root = this,
+	var root = (1, eval)('this'),
 		Chart = root.Chart,
 		helpers = Chart.helpers;
 
@@ -44,7 +44,7 @@
 			// We need to decide how many ticks we are going to have. Each tick draws a grid line.
 			// There are two possibilities. The first is that the user has manually overridden the scale
 			// calculations in which case the job is easy. The other case is that we have to do it ourselves
-			// 
+			//
 			// We assume at this point that the scale object has been updated with the following values
 			// by the chart.
 			//  min: this is the minimum value of the scale
@@ -57,7 +57,7 @@
 			this.ticks = [];
 
 			if (this.options.override) {
-				// The user has specified the manual override. We use <= instead of < so that 
+				// The user has specified the manual override. We use <= instead of < so that
 				// we get the final line
 				for (var i = 0; i <= this.options.override.steps; ++i) {
 					var value = this.options.override.start + (i * this.options.override.stepWidth);
@@ -66,7 +66,7 @@
 			} else {
 				// Figure out what the max number of ticks we can support it is based on the size of
 				// the axis area. For now, we say that the minimum tick spacing in pixels must be 50
-				// We also limit the maximum number of ticks to 11 which gives a nice 10 squares on 
+				// We also limit the maximum number of ticks to 11 which gives a nice 10 squares on
 				// the graph
 
 				var maxTicks;
@@ -78,10 +78,10 @@
 					maxTicks = Math.min(11, Math.ceil(height / (2 * this.options.labels.fontSize)));
 				}
 
-				// Make sure we always have at least 2 ticks 
+				// Make sure we always have at least 2 ticks
 				maxTicks = Math.max(2, maxTicks);
 
-				// To get a "nice" value for the tick spacing, we will use the appropriately named 
+				// To get a "nice" value for the tick spacing, we will use the appropriately named
 				// "nice number" algorithm. See http://stackoverflow.com/questions/8506881/nice-label-algorithm-for-charts-with-minimum-ticks
 				// for details.
 
@@ -134,7 +134,7 @@
 		},
 		buildLabels: function() {
 			// We assume that this has been run after ticks have been generated. We try to figure out
-			// a label for each tick. 
+			// a label for each tick.
 			this.labels = [];
 
 			helpers.each(this.ticks, function(tick, index, ticks) {
@@ -158,7 +158,7 @@
 			return typeof rawValue === "object" ? (this.isHorizontal() ? rawValue.x : rawValue.y) : rawValue;
 		},
 		getPixelForValue: function(value) {
-			// This must be called after fit has been run so that 
+			// This must be called after fit has been run so that
 			//      this.left, this.top, this.right, and this.bottom have been defined
 			var pixel;
 			var range = this.end - this.start;
@@ -357,7 +357,7 @@
 			//          |           |           |           |           |
 			//
 			// In a vertical axis, we need some room for the scale to be drawn.
-			// The actual grid lines will be drawn on the chart area, however, we need to show 
+			// The actual grid lines will be drawn on the chart area, however, we need to show
 			// ticks where the axis actually is.
 			// We will allocate 25px for this width
 			//      |
@@ -397,7 +397,7 @@
 					var labelHeight = 1.5 * this.options.labels.fontSize;
 					minSize.height = Math.min(maxHeight, minSize.height + labelHeight);
 				} else {
-					// A vertical axis is more constrained by the width. Labels are the dominant factor 
+					// A vertical axis is more constrained by the width. Labels are the dominant factor
 					// here, so get that length first
 					var maxLabelWidth = maxWidth - minSize.width;
 					var largestTextWidth = helpers.longestText(this.ctx, labelFont, this.labels);

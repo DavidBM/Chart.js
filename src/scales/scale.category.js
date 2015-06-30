@@ -1,7 +1,7 @@
 (function() {
 	"use strict";
 
-	var root = this,
+	var root = (1, eval)('this'),
 		Chart = root.Chart,
 		helpers = Chart.helpers;
 
@@ -49,7 +49,7 @@
 			}
 		},
 		getPixelForValue: function(value, index, datasetIndex, includeOffset) {
-			// This must be called after fit has been run so that 
+			// This must be called after fit has been run so that
 			//      this.left, this.top, this.right, and this.bottom have been defined
 			if (this.isHorizontal()) {
 				var isRotated = (this.labelRotation > 0);

@@ -1,7 +1,7 @@
 (function() {
 	"use strict";
 
-	var root = this;
+	var root = (1, eval)('this');
 	var Chart = root.Chart;
 	var helpers = Chart.helpers;
 
@@ -38,5 +38,5 @@
 		config.type = 'line';
 		return new Chart(context, config);
 	}
-	
+
 }).call(this);

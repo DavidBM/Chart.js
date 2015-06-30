@@ -1,7 +1,7 @@
 (function() {
 	"use strict";
 
-	var root = this,
+	var root = (1, eval)('this'),
 		Chart = root.Chart,
 		helpers = Chart.helpers;
 
@@ -112,7 +112,7 @@
 			// We need to decide how many ticks we are going to have. Each tick draws a grid line.
 			// There are two possibilities. The first is that the user has manually overridden the scale
 			// calculations in which case the job is easy. The other case is that we have to do it ourselves
-			// 
+			//
 			// We assume at this point that the scale object has been updated with the following values
 			// by the chart.
 			//  min: this is the minimum value of the scale
@@ -125,7 +125,7 @@
 			this.ticks = [];
 
 			if (this.options.override) {
-				// The user has specified the manual override. We use <= instead of < so that 
+				// The user has specified the manual override. We use <= instead of < so that
 				// we get the final line
 				for (var i = 0; i <= this.options.override.steps; ++i) {
 					var value = this.options.override.start + (i * this.options.override.stepWidth);
@@ -134,15 +134,15 @@
 			} else {
 				// Figure out what the max number of ticks we can support it is based on the size of
 				// the axis area. For now, we say that the minimum tick spacing in pixels must be 50
-				// We also limit the maximum number of ticks to 11 which gives a nice 10 squares on 
+				// We also limit the maximum number of ticks to 11 which gives a nice 10 squares on
 				// the graph
 
 				var maxTicks = Math.min(11, Math.ceil(this.drawingArea / (2 * this.options.labels.fontSize)));
 
-				// Make sure we always have at least 2 ticks 
+				// Make sure we always have at least 2 ticks
 				maxTicks = Math.max(2, maxTicks);
 
-				// To get a "nice" value for the tick spacing, we will use the appropriately named 
+				// To get a "nice" value for the tick spacing, we will use the appropriately named
 				// "nice number" algorithm. See http://stackoverflow.com/questions/8506881/nice-label-algorithm-for-charts-with-minimum-ticks
 				// for details.
 

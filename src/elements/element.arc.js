@@ -13,7 +13,7 @@
 
 	"use strict";
 
-	var root = this,
+	var root = (1, eval)('this'),
 		Chart = root.Chart,
 		helpers = Chart.helpers;
 
