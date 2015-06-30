@@ -27,6 +27,7 @@
 		//Variables global to the chart
 		var computeDimension = function(element,dimension)
 		{
+			if(!element.parent) return;
 			if (element['offset'+dimension])
 			{
 				return element['offset'+dimension];
